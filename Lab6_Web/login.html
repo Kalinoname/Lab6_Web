@@ -11,30 +11,63 @@
 
 </head>
 <body class="bg-blue-100 flex items-center justify-center h-screen">
-<!-------------------------------------------------------------------------------------------------------->
     <div class="card w-96 bg-white shadow-xl p-6">
         <!-- login -->
         <h2 class="font-bold text-2xl text-center mb-4">Login</h2>
         <!-- Username -->
         <div class="mb-3 form-control">
             <label for="username">Username</label><br>
-            <input type="text" name="username" id="username" placeholder="Enter name">
+            <input type="text" name="username" id="username" placeholder="Enter name" class="input input-bordered w-full mt-1">
         </div>
         <!-- password -->
         <div class="mb-3 form-control">
             <label for="password">Password</label>
-            <input type="password" name="password" id="password" placeholder="Enter password">
+            <input type="password" name="password" id="password" placeholder="Enter password" class="input input-bordered w-full mt-1">
         </div>
         <!-- button -->
-        <button class="btn btn-primary w-full" onclick="login()">Submit</button>
+        <button class="btn btn-primary w-full mt-2" onclick="login()">Submit</button>
     </div>
-<!-------------------------------------------------------------------------------------------------------->
-    <!-- script -->
+
     <script>
-        function getCookie(){
+        function getCookie(name) {
             let nameEQ = name + "=";
             let cookies = document.cookie.split(";");
-            
+            for (let i = 0; i < cookies.length; i++) {
+                const c = cookies[i].trim();
+                if (c.indexOf(nameEQ) === 0) {
+                    return c.substring(nameEQ.length);
+                }
+            }
+            return null;
+        }
+
+        window.onload = function(){
+            let username = getCookie("username");
+            if (username) {
+                window.location.href = "register.html";
+            }
+        }
+
+        function setCookie(name, value, days) {
+            let expires = "";
+            if (days) {
+                let date = new Date();
+                date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+                expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + value + expires + "; path=/";
+        }
+
+        function login() {
+            let username = document.getElementById("username").value;
+
+            if (username === "") {
+                alert("Please enter username");
+                return;
+            }
+
+            setCookie("username", username, 1);
+            window.location.href = "register.html";
         }
     </script>
 

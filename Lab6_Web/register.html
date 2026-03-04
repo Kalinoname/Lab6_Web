@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex flex-col items-center py-10">
+
+    <!-- Register -->
+    <div class="card w-full max-w-2xl bg-white shadow-xl p-8 mb-6">
+
+        <!-- Welcome + Logout -->
+        <div class="flex justify-between items-center mb-6">
+            <div>
+                <h2 class="font-bold text-2xl">Register User</h2>
+                <p id="welcome" class="text-green-500 font-medium mt-1"></p>
+            </div>
+            <button class="btn btn-error text-white" onclick="logout()">Logout</button>
+        </div>
+
+        <!-- Full Name -->
+        <div class="form-control mb-4">
+            <label class="label"><span class="label-text">Full Name</span></label>
+            <input type="text" id="fullName" placeholder="" class="input input-bordered w-full">
+            <span id="fullNameError" class="text-red-500 text-sm mt-1 hidden">Please enter your full name.</span>
+        </div>
+
+        <!-- Email -->
+        <div class="form-control mb-4">
+            <label class="label"><span class="label-text">Email</span></label>
+            <input type="text" id="email" placeholder="" class="input input-bordered w-full">
+            <span id="emailError" class="text-red-500 text-sm mt-1 hidden">Please enter a valid email (e.g. name@example.com).</span>
+        </div>
+
+        <!-- Phone -->
+        <div class="form-control mb-6">
+            <label class="label"><span class="label-text">Phone</span></label>
+            <input type="text" id="phone" placeholder="" class="input input-bordered w-full">
+            <span id="phoneError" class="text-red-500 text-sm mt-1 hidden">Phone must be digits only, minimum 6 numbers.</span>
+        </div>
+
+        <!-- Buttons -->
+        <div class="flex gap-4">
+            <button class="btn w-1/2 text-white" style="background-color: #ff00ff;" onclick="clearForm()">Clear</button>
+            <button class="btn w-1/2 text-white" style="background-color: #4400ff;" onclick="registerUser()">Register</button>
+        </div>
+    </div>
+
+    <!-- Registered Users Table -->
+    <div class="card w-full max-w-2xl bg-white shadow-xl p-8">
+        <h2 class="font-bold text-2xl mb-4">Registered Users</h2>
+        <table class="table w-full">
+            <thead>
+                <tr>
+                    <th>Full Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="userTableBody"></tbody>
+        </table>
+    </div>
+
+    <script>
+        // -------------------- COOKIE HELPERS --------------------
+        function getCookie(name) {
+            let nameEQ = name + "=";
+            let cookies = document.cookie.split(";");
+            for (let i = 0; i < cookies.length; i++) {
+                let c = cookies[i].trim();
+                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length);
+            }
+            return null;
+        }
+
+        function deleteCookie(name) {
+            document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        }
+
+        // -------------------- PAGE LOAD --------------------
+        window.onload = function () {
+            let username = getCookie("username");
+            if (!username) {
+                window.location.href = "login.html";
+            } else {
+                document.getElementById("welcome").innerText = "Welcome, " + username;
+            }
+            renderTable();
+        }
+
+        // -------------------- LOGOUT --------------------
+        function logout() {
+            deleteCookie("username");
+            window.location.href = "login.html";
+        }
+
+        // -------------------- CLEAR --------------------
+        function clearForm() {
+            ["fullName", "email", "phone"].forEach(id => {
+                document.getElementById(id).value = "";
+                document.getElementById(id).classList.remove("input-error");
+            });
+            ["fullNameError", "emailError", "phoneError"].forEach(id => {
+                document.getElementById(id).classList.add("hidden");
+            });
+        }
+
+        // -------------------- VALIDATION --------------------
+        function isValidEmail(email) {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        function isValidPhone(phone) {
+            return /^\d{6,}$/.test(phone); // digits only, min 6
+        }
+
+        function showError(fieldId, errorId, show) {
+            document.getElementById(fieldId).classList.toggle("input-error", show);
+            document.getElementById(errorId).classList.toggle("hidden", !show);
+        }
+
+        // -------------------- REGISTER --------------------
+        function registerUser() {
+            let fullName = document.getElementById("fullName").value.trim();
+            let email    = document.getElementById("email").value.trim();
+            let phone    = document.getElementById("phone").value.trim();
+
+            let nameInvalid  = !fullName;
+            let emailInvalid = !isValidEmail(email);
+            let phoneInvalid = !isValidPhone(phone);
+
+            showError("fullName", "fullNameError", nameInvalid);
+            showError("email",    "emailError",    emailInvalid);
+            showError("phone",    "phoneError",    phoneInvalid);
+
+            if (nameInvalid || emailInvalid || phoneInvalid) return;
+
+            let users = JSON.parse(localStorage.getItem("users")) || [];
+            users.push({ fullName, email, phone });
+            localStorage.setItem("users", JSON.stringify(users));
+
+            clearForm();
+            renderTable();
+        }
+
+        // -------------------- RENDER TABLE --------------------
+        function renderTable() {
+            let users = JSON.parse(localStorage.getItem("users")) || [];
+            let tbody = document.getElementById("userTableBody");
+            tbody.innerHTML = "";
+
+            users.forEach(function (user, index) {
+                let row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${user.fullName}</td>
+                    <td>${user.email}</td>
+                    <td>${user.phone}</td>
+                    <td><button class="btn btn-error btn-sm text-white" onclick="deleteUser(${index})">Delete</button></td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        // -------------------- DELETE --------------------
+        function deleteUser(index) {
+            let users = JSON.parse(localStorage.getItem("users")) || [];
+            users.splice(index, 1);
+            localStorage.setItem("users", JSON.stringify(users));
+            renderTable();
+        }
+    </script>
+
+</body>
+</html>

@@ -1,150 +1,140 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DarkHydrus.CV</title>
+    <title>UserHub — Welcome</title>
+
+    <!-- Tailwind + DaisyUI CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&display=swap" rel="stylesheet">
 </head>
-<body>
-    <table width="100%">
-        <h1 style="text-align: center;">MY CV</h1>
-        <tr>
-            <td width="150">
-                <img src="Hean Chhanun.jpg" alt="image" width="140", height="220">
-            </td>
-            <td valign="top">
-                <h1>Hean Chhanun</h1>
-                <strong></strong>
-                <p>  Email:
-                    <a href="mailto:chhanunhean@gmail.com">chhanunhean@gmail.com</a>
-                </p>
-                <p>
-                    Phone: +855 70 625 363
-                </p>
-                <p> Linkedin: 
-                    <a href="mailto:https://www.linkedin.com/in/hean-chhanun-a5ab1a37b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">Chhanun</a>
-                </p>
-                <p> Portfolio: 
-                    <a href="https://github.com/dashboard">DarkHydrus</a>
-                </p>
-                <p> My Schedule:
-                    <a href="schedule.html">View Schedule</a>
-                </p>
-            </td>
-            <td valign="top">
-                <h1>Content</h1>
-                <a href="#professional-summary">Professional Summary</a>
-                <p>
-                    <a href="#Work-Experience">Work Experience</a>
-                </p>
-                <p>
-                    <a href="#Technical-Skills">Technical Skills</a>
-                </p>
-                    <a href="#Education">Education</a>
-                <p>
-                    <a href="#Interests & Hobbies">Interests & Hobbies</a>
-                </p>
-            </td>
-        </tr>
-    </table>
-<hr>
-<h2 id="professional-summary">Professional Summary</h2>
-    <p>
-        I am a cybersecurity student at Cambodia Academy of Digital Technology (CADT) passionate about protecting systems and learning new security technologies. I aim to apply my knowledge in networking and cybersecurity to real-world projects and develop my skills as a future IT security professional.
-    </p>
-<h2 id="Work-Experience">Work Experience</h2>
-<h3>Year 2 term 1 Student @ CADT</h3>
-    <p>
-        <em>December 2025 Projects and Final</em>
-    </p>
-    <ul>
-        <li>
-            Python Project: BEYDA SCANNER
-        </li>
-        <li>
-            Introduction to Cyber Security assignment 1 month for SOC 
-        </li>
-        <li>
-            Final Exam for term 1
-        </li>
-    </ul>
-<h3>Year 2 Term 2Student @ CADT</h3>
-    <p>
-        <em>Janury 12 - Present is learnning</em>
-    </p>
-    <ul>
-        <li>
-            Web Development
-        </li>
-        <li>
-            CCNA 3
-        </li>
-        <li>
-            System Administration
-        </li>
-        <li>
-            Operating System
-        </li>
-        <li>
-            Data Communication
-        </li>
-    </ul>
-<hr>
-<h2 id="Technical-Skills">Technical Skills</h2>
-    <table border="1" cellpadding="10" cellspacing="0" width="100%">
-        <tr>
-            <th>Category</th>
-            <th>Proficiencies</th>
-        </tr>
-        <tr>
-            <td>
-                <strong>Languages</strong>
-            </td>
-            <td>
-                Python, HTML, CSS, JavaScript, SQL
-            </td>
-        </tr>
-        <tr> 
-            <td>
-                <strong>Software</strong>
-            </td>
-            <td>
-                Telegram, Microsoft, Visual Studio Code, Elearning
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <strong>Soft Skills</strong>
-            </td>
-            <td>
-                Communication, Teamwork, Problem-Solving, Time Management
-            </td>
-        </tr>
-    </table> 
-<hr>
-<h2 id="Education">Education</h2>
-    <ul>
-        <li>
-            <strong>Bachelor in Telecommunication and Networking</strong>
-            <br> 
-                Cambodia Academy of Digital Technology (CADT), Phnom Penh, Cambodia
-            <br>
-        </li>
-    </ul>
-<hr>
-<h2 id="Interests & Hobbies">Interests & Hobbies</h2>
-    <ul>
-        <li>Cybersecurity Awareness</li>
-        <li>Open Source Contribution</li>
-        <li>Networking and System Administration</li>
-        <li>Reading Tech Blogs and Articles</li>
-    </ul>
-<hr>
-<h2>Address</h2>
-    <div>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3536.1429608864646!2d104.90884797452806!3d11.654294242389367!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310953bad45e4ee1%3A0x6c33cb023d508017!2sCADT%20-%20Innovation%20Center!5e1!3m2!1sen!2skh!4v1768445831988!5m2!1sen!2skh" 
-        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+<body class="min-h-screen bg-base-300 flex items-center justify-center p-6">
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 max-w-5xl w-full items-center">
+
+        <!-- LEFT: Text + CTA -->
+        <div class="flex flex-col gap-6">
+
+            <!-- Badge -->
+            <div class="badge badge-outline badge-lg gap-2 w-fit">
+                <span class="w-2 h-2 rounded-full bg-success animate-pulse"></span>
+                User Management System
+            </div>
+
+            <!-- Heading -->
+            <h1 class="text-5xl font-extrabold leading-tight" style="font-family: 'Syne', sans-serif;">
+                Manage your <br>
+                <span class="text-primary">users simply.</span>
+            </h1>
+
+            <!-- Subtitle -->
+            <p class="text-base-content/60 text-lg leading-relaxed max-w-md">
+                A clean, fast way to register, track, and manage your users.
+                Log in to get started — no setup required.
+            </p>
+
+            <!-- Buttons -->
+            <div class="flex flex-wrap items-center gap-4">
+                <a href="login.html" class="btn btn-primary btn-lg gap-2">
+                    Register
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                <a href="login.html" class="btn btn-ghost btn-lg">Login →</a>
+            </div>
+
+            <!-- Stats -->
+            <div class="divider my-0"></div>
+            <div class="flex gap-8">
+                <div>
+                    <div class="text-2xl font-bold text-primary" style="font-family:'Syne',sans-serif;">100%</div>
+                    <div class="text-xs text-base-content/50 uppercase tracking-widest mt-1">Free</div>
+                </div>
+                <div>
+                    <div class="text-2xl font-bold text-secondary" style="font-family:'Syne',sans-serif;">Fast</div>
+                    <div class="text-xs text-base-content/50 uppercase tracking-widest mt-1">No delay</div>
+                </div>
+                <div>
+                    <div class="text-2xl font-bold text-accent" style="font-family:'Syne',sans-serif;">Simple</div>
+                    <div class="text-xs text-base-content/50 uppercase tracking-widest mt-1">Easy to use</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT: Preview Card -->
+        <div class="card bg-base-100 shadow-2xl border border-base-content/10">
+            <div class="card-body gap-4">
+
+                <!-- Card Header -->
+                <div class="flex justify-between items-center">
+                    <h2 class="card-title text-lg" style="font-family:'Syne',sans-serif;">Registered Users</h2>
+                    <div class="badge badge-success badge-sm gap-1">
+                        <span class="w-1.5 h-1.5 rounded-full bg-success-content animate-pulse"></span>
+                        Live
+                    </div>
+                </div>
+
+                <!-- User Rows -->
+                <div class="flex items-center gap-3 py-3 border-b border-base-content/10">
+                    <div class="avatar placeholder">
+                        <div class="bg-primary text-primary-content rounded-full w-10">
+                            <span class="text-sm font-bold">MN</span>
+                        </div>
+                    </div>
+                    <div class="flex-1">
+                        <div class="font-medium text-sm">Mona</div>
+                        <div class="text-xs text-base-content/50">mona@gmail.com</div>
+                    </div>
+                    <div class="badge badge-success badge-sm">Active</div>
+                </div>
+
+                <div class="flex items-center gap-3 py-3 border-b border-base-content/10">
+                    <div class="avatar placeholder">
+                        <div class="bg-secondary text-secondary-content rounded-full w-10">
+                            <span class="text-sm font-bold">KK</span>
+                        </div>
+                    </div>
+                    <div class="flex-1">
+                        <div class="font-medium text-sm">Kakada</div>
+                        <div class="text-xs text-base-content/50">kakada@gmail.com</div>
+                    </div>
+                    <div class="badge badge-success badge-sm">Active</div>
+                </div>
+
+                <div class="flex items-center gap-3 py-3">
+                    <div class="avatar placeholder">
+                        <div class="bg-accent text-accent-content rounded-full w-10">
+                            <span class="text-sm font-bold">SR</span>
+                        </div>
+                    </div>
+                    <div class="flex-1">
+                        <div class="font-medium text-sm">Sora</div>
+                        <div class="text-xs text-base-content/50">sora@gmail.com</div>
+                    </div>
+                    <div class="badge badge-primary badge-sm">New</div>
+                </div>
+
+                <!-- Metric -->
+                <div class="bg-base-200 rounded-2xl p-4 flex items-center justify-between mt-2">
+                    <div>
+                        <div class="text-xs text-base-content/50 uppercase tracking-widest mb-1">Total Users</div>
+                        <div class="text-3xl font-extrabold text-primary" style="font-family:'Syne',sans-serif;">3</div>
+                        <progress class="progress progress-primary w-24 mt-2" value="72" max="100"></progress>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-primary opacity-40" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                </div>
+
+            </div>
+        </div>
+
     </div>
 
 </body>
